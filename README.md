@@ -7,6 +7,7 @@ How to Run
 -To run, you must compile the main.cpp files along with the attached class of Cars.cpp and Cars.h.
 -Once it is compiled the menu is operated by inputing the number or words that you are prompted for in each stage of the menu.
 -Be sure to watch your spelling and Capitalization!
+-The CarList.txt file is there as a set of data that is pre-loaded into the program. This is not needed, but it is helpful to have in order to establish a base of data.
 
 Dependencies
 -This program depends on a compiler such as codeblocks in order to build and run it.
