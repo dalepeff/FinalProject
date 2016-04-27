@@ -1,0 +1,5 @@
+Toyota,Camry,1999,Used,4600
+Ford,Explorer,2002,Used,6200
+Ford,Taurus,2005,Used,8300
+Honda,Civic,2015,New,18500
+Licoln,Navigator,2007,Used,19500
