@@ -15,16 +15,19 @@ int main()
     string line;
     ifstream inFile;
     inFile.open("CarList.txt");
-    string make, model, year, condition, price;
+    string year, condition, price;
+    char make[256];
+    char model[256];
+    bool correct=false;
+
     int i=0;
 
     while (getline( inFile, line ))
         {
-            string make, model, year, condition, price;
             stringstream category( line );
-            getline( category, make, ',' );
-            getline(category, model, ',');
-            getline(category, year, ',');
+            cin.getline(make,256);
+            cin.getline(model, 256);
+            getline(category, year);
             stringstream ss(year);
             int intyear;
             ss >> intyear;
@@ -58,13 +61,13 @@ int main()
 
         if (menu == 1)
         {
-            string insertMake, insertModel, insertCondition;
+            string insertCondition;
             int insertYear, insertPrice;
             cout<<"Insert info about car."<<endl;
             cout<<"Make: ";
-            cin>>insertMake;
+            cin.getline(make,256);
             cout<<"Model: ";
-            cin>>insertModel;
+            cin.getline(model,256);
             cout<<"Year: ";
             cin>>insertYear;
             while(cin.fail()) {
@@ -72,15 +75,36 @@ int main()
                     cin.clear();
                     cin.ignore(256,'\n');
                     cin >> insertYear;
-    }
+                                }
 
             cout<<"Condition (New or Used): ";
             cin>>insertCondition;
+            if(insertCondition == "New" || insertCondition== "Used" || insertCondition=="new" || insertCondition=="used")
+                {
+                    correct=true;
+                }
+            while(correct==false)
+            {
+
+                cout<<"Not a valid input, please enter New or Used"<<endl;
+                cin.clear();
+                cin.ignore(256,'\n');
+                cin>>insertCondition;
+            if(insertCondition == "New" || insertCondition== "Used" || insertCondition=="new" || insertCondition=="used")
+                {
+                    correct=true;
+                }
+            }
             cout<<"Price: ";
             cin>>insertPrice;
+                    while(cin.fail()) {
+                    cout << "Please Enter a valid number." << std::endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    cin >> insertPrice;}
             cout<<'\n'<<endl;
 
-            Crs.addCarNode(insertMake, insertModel, insertYear, insertCondition, insertPrice);
+            Crs.addCarNode(make, model, insertYear, insertCondition, insertPrice);
         }
 
         if (menu == 2){
@@ -97,8 +121,8 @@ int main()
             cout<<"4. Make"<<endl;
             cout<<"5. Quit to main menu"<<endl;
             cin >> searchcriteria;
-            while(cin.fail()) {
-                    cout << "Please Enter a valid option." << std::endl;
+            while(cin.fail()||searchcriteria<1 || searchcriteria>5) {
+                    cout << "Please Enter a valid number." << std::endl;
                     cin.clear();
                     cin.ignore(256,'\n');
                     cin >> searchcriteria;
